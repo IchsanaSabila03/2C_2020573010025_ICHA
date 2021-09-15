@@ -1,7 +1,12 @@
-<!DOCTYPE html>
-<hhtml lang="en">
-
+<Html>
 <head>
-        <meta>
+        <title> contoh skrip php </title>
 </head>
-</hhtml>
+<body>
+    <?php 
+    $nama = "ichsana sabila;"
+    echo "$nama berkata / "katakan
+namamu!\"";
+    ?>
+</body>
+</html>
