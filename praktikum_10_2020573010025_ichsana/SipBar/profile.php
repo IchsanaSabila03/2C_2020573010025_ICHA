@@ -1,13 +1,18 @@
-<?php 
-require "proses/session.php";
+<?php
+require "proses/koneksi.php";
+  $query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$_SESSION[username]'");
+  // $query1 = mysqli_query($conn, "SELECT * FROM tb_user user LEFT JOIN tb_mahasiswa mhs ON usr.id=mhs.id_user WHERE username =  $_SESSION[username]");
+  $data = mysqli_fetch_array($query);
+  // $data1 = mysqli_fetch_array($query1);
 ?>
-
 <!doctype html>
 <html lang="en">
+  
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
@@ -31,8 +36,37 @@ require "proses/session.php";
           <!--Akhir Sidebar-->
           <!--Content-->
           <div class="col-9">
-          <h2>SISTEM PEMINJAMAN BARANG JURUSAN TEKNOLOGI INFORMASI DAN KOMPUTER (TIK) POLITEKNIK NEGERI LHOKSEUMAWE</h2>
-          </div>
+          <h2>Profile</h2>
+          <div class="card">
+            <div class="card-header">
+              Profile
+            </div>
+            <div class="card-body">
+          <form>
+            <div class="mb-3">
+              <label class="form-label">Email address</label>
+              <input type="email" class="form-control"
+              value="<?php echo $data['username'];?>"
+              disabled>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Level</label>
+              <input type="email" class="form-control"
+              value="<?php echo $data['level'];?>"
+              disabled>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">nim</label>
+              <input type="email" class="form-control"
+              value="<?php echo $data1['nim'];?>"
+              disabled>
+            </div>
+
+            <!--<button type="submit" class="btn btn-primary">Submit</button>-->
+          </form>
+        </div>
+      </div>
+    </div>
         <!--Akhir content-->
         </div>
       </div>
