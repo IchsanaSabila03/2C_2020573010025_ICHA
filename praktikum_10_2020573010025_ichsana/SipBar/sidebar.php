@@ -2,7 +2,6 @@
 require "proses/koneksi.php";
   $query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$_SESSION[username]'");
   $data = mysqli_fetch_array($query);
-  echo $data['level'];
 ?>
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="bootstrap" viewBox="0 0 118 94">

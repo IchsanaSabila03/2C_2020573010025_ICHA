@@ -1,9 +1,7 @@
 <?php
 require "proses/koneksi.php";
-  $query = mysqli_query($conn, "SELECT * FROM tb_user WHERE username = '$_SESSION[username]'");
-  // $query1 = mysqli_query($conn, "SELECT * FROM tb_user user LEFT JOIN tb_mahasiswa mhs ON usr.id=mhs.id_user WHERE username =  $_SESSION[username]");
-  $data = mysqli_fetch_array($query);
-  // $data1 = mysqli_fetch_array($query1);
+  $query1 = mysqli_query($conn, "SELECT * FROM tb_user usr LEFT JOIN tb_mahasiswa mhs ON usr.id=mhs.id_user WHERE username = '$_SESSION[username]'");
+  $data1 = mysqli_fetch_array($query1);
 ?>
 <!doctype html>
 <html lang="en">
@@ -46,19 +44,67 @@ require "proses/koneksi.php";
             <div class="mb-3">
               <label class="form-label">Email address</label>
               <input type="email" class="form-control"
-              value="<?php echo $data['username'];?>"
+              value="<?php echo $data1['username'];?>"
               disabled>
             </div>
             <div class="mb-3">
               <label class="form-label">Level</label>
               <input type="email" class="form-control"
-              value="<?php echo $data['level'];?>"
+              value="<?php echo $data1['level'];?>"
               disabled>
             </div>
             <div class="mb-3">
-              <label class="form-label">nim</label>
-              <input type="email" class="form-control"
+              <label class="form-label">Nim</label>
+              <input type="text" class="form-control"
               value="<?php echo $data1['nim'];?>"
+              disabled>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nama</label>
+              <input type="text" class="form-control"
+              value="<?php echo $data1['nama'];?>"
+              disabled>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Kelas</label>
+              <input type="text" class="form-control"
+              value="<?php echo $data1['kelas'];?>"
+              disabled>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Prodi</label>
+              <input type="text" class="form-control"
+              value="<?php echo $data1['prodi'];?>"
+              disabled>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Alamat</label>
+              <input type="text" class="form-control"
+              value="<?php echo $data1['alamat'];?>"
+              disabled>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Tanggal Lahir</label>
+              <input type="text" class="form-control"
+              value="<?php echo $data1['tgl_lahir'];?>"
+              disabled>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Tempat Lahir</label>
+              <input type="text" class="form-control"
+              value="<?php echo $data1['tempat_lahir'];?>"
+              disabled>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Nomor Telepon</label>
+              <input type="text" class="form-control"
+              value="<?php echo $data1['no_hp'];?>"
+              disabled>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Id User</label>
+              <input type="text" class="form-control"
+              value="<?php echo $data1['id_user'];?>"
               disabled>
             </div>
 
