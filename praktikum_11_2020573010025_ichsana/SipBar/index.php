@@ -15,9 +15,9 @@ if (empty ($_GET['x'])){
 }elseif($_GET['x']=='laporan'){
   require "laporan.php";
 }elseif($_GET['x']=='profile'){
-  require "profile.php";
+    require "profile.php";
 }elseif($_GET['x']=='databrg'){
-  require "data_barang.php";
+    require "data_barang.php";
 }else{
   echo "<script>window.location ='home';</script>";
 }
