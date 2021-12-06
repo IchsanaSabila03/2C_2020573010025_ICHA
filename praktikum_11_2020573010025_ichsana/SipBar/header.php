@@ -19,7 +19,7 @@
         <strong> <?php echo $_SESSION['username']; ?></strong>
       </a>
       <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
-        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="setting">Settings</a></li>
         <li><a class="dropdown-item" href="profile">Profile</a></li>
 
         <li><hr class="dropdown-divider"></li>

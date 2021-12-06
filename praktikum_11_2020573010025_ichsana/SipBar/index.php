@@ -16,6 +16,8 @@ if (empty ($_GET['x'])){
   require "laporan.php";
 }elseif($_GET['x']=='profile'){
     require "profile.php";
+}elseif($_GET['x']=='setting'){
+    require "setting.php";
 }elseif($_GET['x']=='databrg'){
     require "data_barang.php";
 }else{
