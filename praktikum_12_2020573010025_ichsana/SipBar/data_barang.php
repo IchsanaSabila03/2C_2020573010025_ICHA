@@ -53,7 +53,7 @@ require "proses/koneksi.php";
       <th scope="col">Kode Barang</th>
       <th scope="col">Nama Barang</th>
       <th scope="col">Keterangan</th>
-      <th scope="col">Stok</th>
+      <th scope="col">Kondisi Barang</th>
       <th scope="col">Aksi</th>
     </tr>
   </thead>
@@ -68,7 +68,7 @@ require "proses/koneksi.php";
       <td><?php echo $data['kode_barang'] ?></td>
       <td><?php echo $data['nama_barang'] ?></td>
       <td><?php echo $data['keterangan'] ?></td>
-      <td><?php echo $data['stok'] ?></td>
+      <td><?php echo $data['kondisi'] ?></td>
       <td>
         <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $no ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -107,8 +107,24 @@ require "proses/koneksi.php";
             <input name="ket" type="text" class="form-control" id="recipient-name" value="<?php echo $data['keterangan'];?>">
           </div>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Stok:</label>
-            <input name="stok" type="number" class="form-control" id="recipient-name" value="<?php echo $data['stok'];?>">
+            <label for="recipient-name" class="col-form-label">Kondisi Barang:</label>
+            <select name="kondisi" class="form-select" aria-label="Default select example">
+              <?php
+                if($data['kondisi']=='Baik'){
+                  echo '<option selected value="Baik">Baik</option>';
+                  echo '<option value="Rusak">Rusak</option>';
+                  echo '<option value="Hilang">Hilang</option>';
+                }elseif($data['kondisi']=="Rusak"){
+                  echo '<option value="Baik">Baik</option>';
+                  echo '<option selected value="Rusak">Rusak</option>';
+                  echo '<option value="Hilang">Hilang</option>';
+                }elseif($data['kondisi']=="Hilang"){
+                  echo '<option value="Baik">Baik</option>';
+                  echo '<option value="Rusak">Rusak</option>';
+                  echo '<option selected value="Hilang">Hilang</option>';
+                }
+              ?>
+            </select>
           </div>
       </div>
       <div class="modal-footer">
@@ -173,8 +189,12 @@ require "proses/koneksi.php";
             <input name="ket" type="text" class="form-control" id="recipient-name">
           </div>
           <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Stok:</label>
-            <input name="stok" type="number" class="form-control" id="recipient-name">
+            <label for="recipient-name" class="col-form-label">Kondisi Barang:</label>
+            <select name="kondisi" class="form-select" aria-label="Default select example">
+             <option value="Baik">Baik</option>
+             <option value="Rusak">Rusak</option>
+             <option value="Hilang">Hilang</option>
+            </select>
           </div>
       </div>
       <div class="modal-footer">
