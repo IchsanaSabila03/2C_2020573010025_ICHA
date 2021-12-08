@@ -35,7 +35,7 @@ $data1 = mysqli_fetch_array($query1);
                 </div>
                 <!--isi konten -->
                 <div class="col-9 mt-3">
-                    <h4 class="card-header">Setting Profile</h4>
+                    <h4 class="card-header"> Setting Profile</h4>
                     <hr>
                     <div class="card mt-4">
                             <form action="proses/proses_gantipw.php" method="POST">
