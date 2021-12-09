@@ -155,7 +155,7 @@ require "proses/koneksi.php";
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah data barang</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Tambah peminjaman</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="proses/proses_tambah_databarang.php" method="POST">
@@ -175,7 +175,7 @@ require "proses/koneksi.php";
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Kondisi Barang:</label>
-            <input name="kondisi" type="number" class="form-control" id="recipient-name">
+            <input name="kondisi" type="text" class="form-control" id="recipient-name">
           </div>
       </div>
       <div class="modal-footer">
