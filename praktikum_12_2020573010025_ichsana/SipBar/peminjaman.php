@@ -151,11 +151,11 @@ require "proses/koneksi.php";
         <!--Akhir content-->
 
         <!-- Modal tambah data barang -->
-<div class="modal fade" id="tambahdatabarang" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="tambahdatabarang" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah peminjaman</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Tambah data Peminjaman</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="proses/proses_tambah_databarang.php" method="POST">
@@ -175,7 +175,11 @@ require "proses/koneksi.php";
           </div>
           <div class="mb-3">
             <label for="recipient-name" class="col-form-label">Kondisi Barang:</label>
-            <input name="kondisi" type="text" class="form-control" id="recipient-name">
+            <select name="kondisi" class="form-select" aria-label="Default select example">
+             <option value="Baik">Baik</option>
+             <option value="Rusak">Rusak</option>
+             <option value="Hilang">Hilang</option>
+            </select>
           </div>
       </div>
       <div class="modal-footer">
