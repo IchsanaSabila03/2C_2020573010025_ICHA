@@ -3,7 +3,13 @@ require "koneksi.php";
 SESSION_start();
     $kd_brg         = $_POST['kode_brg'];
     // $wkt_kembali    = date("y-m-d H:i:s", strtotime ($_POST['wkt_pengembalian']));
-    $wkt_kembali    = $_POST['wkt_pengembalian'];
+    
+    if(empty($_POST['wkt_pengembalian'])){
+        echo "<script>alert('Waktu pengembalian tidak boleh kosong')</script>";
+        echo "<script>window.location='../peminjaman'</script>";
+    } else {
+        $wkt_kembali    = $_POST['wkt_pengembalian'];
+    }
 
     $select1 = mysqli_query($conn, "SELECT barang FROM tb_peminjaman WHERE barang='$kd_brg'");
     $hasil1  = mysqli_fetch_array($select1);

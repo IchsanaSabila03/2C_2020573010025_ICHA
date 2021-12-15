@@ -62,7 +62,10 @@ WHERE username='$_SESSION[username]'");
       <th scope="col">Kode Barang</th>
       <th scope="col">Nama Barang</th>
       <th scope="col">Keterangan</th>
-      <th scope="col">Kondisi Barang</th>
+      <th scope="col">Kondisi</th>
+      <th scope="col">Waktu Peminjaman</th>
+      <th scope="col">Waktu Pengembalian</th>
+      <th scope="col">Status</th>
       <th scope="col">Aksi</th>
     </tr>
   </thead>
@@ -78,6 +81,9 @@ WHERE username='$_SESSION[username]'");
       <td><?php echo $data['nama_barang'] ?></td>
       <td><?php echo $data['keterangan'] ?></td>
       <td><?php echo $data['kondisi'] ?></td>
+      <td><?php echo date("d-m-y H:i:s" , strtotime($data['waktu_pinjam'])) ?></td>
+      <td><?php echo date("d-m-y H:i:s" , strtotime($data['waktu_pengembalian'])) ?></td>
+      <td><?php echo $data['status'] ?></td>
       <td>
         <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $no ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -174,7 +180,7 @@ WHERE username='$_SESSION[username]'");
               <?php
               $query = mysqli_query ($conn, "SELECT * FROM tb_barang");
               foreach ($query as $hasil){
-                echo "<option value='$hasil[kode_barang]'>" . $hasil['nama_barang'] . "</option>";
+                echo "<option value='$hasil[kode_barang]'>$hasil[kode_barang] $hasil[nama_barang]  $hasil[keterangan]</option>";
               }
               ?>
             </select> 
@@ -239,6 +245,7 @@ WHERE username='$_SESSION[username]'");
                       <td><?php echo $data['waktu_pinjam'] ?></td>
                       <td><?php echo $data['waktu_pengembalian'] ?></td>     
                     </tr>
+
                 <!-- Modal ubah data barang -->
                 <div class="modal fade" id="exampleModal<?php echo $no ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
