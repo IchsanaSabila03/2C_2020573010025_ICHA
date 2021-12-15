@@ -83,9 +83,21 @@ WHERE username='$_SESSION[username]'");
       <td><?php echo $data['kondisi'] ?></td>
       <td><?php echo date("d-m-y H:i:s" , strtotime($data['waktu_pinjam'])) ?></td>
       <td><?php echo date("d-m-y H:i:s" , strtotime($data['waktu_pengembalian'])) ?></td>
-      <td><?php echo $data['status'] ?></td>
       <td>
-        <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $no ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+        <?php 
+        if($data['status'] == 1) echo "<span class='badge bg-secondary'>Dipending</span>";
+        elseif ($data['status'] == 2) echo "<span class='badge bg-primary'>Disetujui</span>";
+        elseif ($data['status'] == 3) echo "<span class='badge bg-danger'>Ditolak</span>";
+        elseif ($data['status'] == 4) echo "<span class='badge bg-success'>Dikembalikan</span>";
+        else echo " ";
+        ?>
+      </td>
+      <td>
+        <?php 
+        if($data['status'] == 1) $status = "";
+        else $status = "disabled";
+        ?>
+        <button <?php  echo $status ?> class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $no ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
   <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
 </svg></button>
@@ -235,7 +247,15 @@ WHERE username='$_SESSION[username]'");
                       <td><?php echo $data['nama_barang'] ?></td>
                       <td><?php echo $data['keterangan'] ?></td>
                       <td><?php echo $data['kondisi'] ?></td>
-                      <td><?php echo $data['status'] ?></td>
+                      <td>
+        <?php 
+        if($data['status'] == 1) echo "<span class='badge bg-warning'>Dipinjam</span>";
+        elseif ($data['status'] == 2) echo "<span class='badge bg-warning'>Dipinjam</span>";
+        elseif ($data['status'] == 3) echo "<span class='badge bg-success'>Tersedia</span>";
+        elseif ($data['status'] == 4) echo "<span class='badge bg-success'>Tersedia</span>";
+        else echo "<span class='badge bg-success'>Tersedia</span>";
+        ?>
+      </td>
                       <td class="text-nowrap">
                         <?php echo $data['nama'] ?><br>
                         <?php echo $data['kelas'] ?><br>
