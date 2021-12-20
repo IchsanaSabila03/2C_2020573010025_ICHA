@@ -97,11 +97,11 @@ WHERE username='$_SESSION[username]'");
         if($data['status'] == 1) $status = "";
         else $status = "disabled";
         ?>
-        <button <?php  echo $status ?> class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal<?php echo $no ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+        <button <?php  echo $status ?> class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditPinjaman<?php echo $no ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
   <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
 </svg></button>
-        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Modalhapus<?php echo $no ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+        <button <?php  echo $status ?> class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#Modalhapus<?php echo $no ?>"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
   <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
 </svg></button>
@@ -109,41 +109,45 @@ WHERE username='$_SESSION[username]'");
     </tr>
 
 <!-- Modal ubah data barang -->
-<div class="modal fade" id="exampleModal<?php echo $no ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ubah data barang</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form action="proses/proses_edit_databarang.php" method="POST">
-        <input type="hidden" name="kd_brg" value="<?php echo $data['kode_barang'];?>">
-      <div class="modal-body">
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Kode Barang:</label>
-            <input type="text" class="form-control" id="recipient-name" value="<?php echo $data['kode_barang'];?>" disabled> 
-            </div>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Nama Barang:</label>
-            <input name="nm_brg" type="text" class="form-control" id="recipient-name" value="<?php echo $data['nama_barang'];?>">
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Keterangan:</label>
-            <input name="ket" type="text" class="form-control" id="recipient-name" value="<?php echo $data['keterangan'];?>">
-          </div>
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Kondisi Barang:</label>
-            <input name="kondisi" type="number" class="form-control" id="recipient-name" value="<?php echo $data['kondisi'];?>">
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
+    <!-- Modal -->
+    <div class="modal fade" id="modalEditPinjaman<?php echo $no ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Edit Peminjaman</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <form action="proses/proses_update_peminjaman.php" method="POST">
+                                                <div class="modal-body">
+                                                    <input type="hidden" value="<?php echo $data['kode_barang'] ?>" name="kd_brg">
+                                                    <div class="mb-3">
+                                                        <label for="recipient-name" class="col-form-label">Nama Barang: </label>
+                                                        <select name="nm_brg" class="form-select" aria-label="Default Select Example">
+                                                            <?php
+                                                            $query = mysqli_query($conn, "SELECT * FROM tb_barang");
+
+                                                            foreach ($query as $_data) {
+                                                                echo "<option value='$_data[kode_barang]'> $_data[kode_barang] $_data[nama_barang] $_data[keterangan]</option>";
+                                                            }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="recipient-name" class="col-form-label">Waktu Pengembalian:</label>
+                                                        <input type="datetime-local" name="wkt_pengembalian" class="form-control">
+                                                    </div>
+                                                    <div class="text-center text-danger font-monospace">
+                                                        <h6>Waktu Peminjaman akan Otomatis terisi..!</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
 <!-- Akhir Modal ubah data barang -->
 
 <!-- Modal hapus data barang -->
@@ -159,7 +163,7 @@ WHERE username='$_SESSION[username]'");
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <a href="proses/proses_hapus_databarang.php?id=<?php echo $data ['kode_barang'] ?>"
+        <a href="proses/proses_hapus_peminjaman.php?id=<?php echo $data ['kode_barang'] ?>"
         class="btn btn-danger">Hapus</a>
       </div>
     </div>
@@ -266,64 +270,6 @@ WHERE username='$_SESSION[username]'");
                       <td><?php echo $data['waktu_pengembalian'] ?></td>     
                     </tr>
 
-                <!-- Modal ubah data barang -->
-                <div class="modal fade" id="exampleModal<?php echo $no ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ubah data barang</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <form action="proses/proses_edit_databarang.php" method="POST">
-                        <input type="hidden" name="kd_brg" value="<?php echo $data['kode_barang'];?>">
-                      <div class="modal-body">
-                          <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Kode Barang:</label>
-                            <input type="text" class="form-control" id="recipient-name" value="<?php echo $data['kode_barang'];?>" disabled> 
-                            </div>
-                          <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Nama Barang:</label>
-                            <input name="nm_brg" type="text" class="form-control" id="recipient-name" value="<?php echo $data['nama_barang'];?>">
-                          </div>
-                          <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Keterangan:</label>
-                            <input name="ket" type="text" class="form-control" id="recipient-name" value="<?php echo $data['keterangan'];?>">
-                          </div>
-                          <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">Kondisi Barang:</label>
-                            <input name="kondisi" type="number" class="form-control" id="recipient-name" value="<?php echo $data['kondisi'];?>">
-                          </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-                      </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                <!-- Akhir Modal ubah data barang -->
-
-                <!-- Modal hapus data barang -->
-                <div class="modal fade" id="Modalhapus<?php echo $no ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Hapus data barang</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        Apakah anda yakin ingin menghapus data barang <?php echo $data['nama_barang'];?> ini?
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <a href="proses/proses_hapus_databarang.php?id=<?php echo $data ['kode_barang'] ?>"
-                        class="btn btn-danger">Hapus</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Akhir Modal hapus data barang -->
                     <?php } ?>
                   </tbody>
                 </table>
