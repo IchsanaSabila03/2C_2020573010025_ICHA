@@ -109,66 +109,65 @@ WHERE username='$_SESSION[username]'");
     </tr>
 
 <!-- Modal ubah data barang -->
-    <!-- Modal -->
-    <div class="modal fade" id="modalEditPinjaman<?php echo $no ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLabel">Edit Peminjaman</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <form action="proses/proses_update_peminjaman.php" method="POST">
-                                                <div class="modal-body">
-                                                    <input type="hidden" value="<?php echo $data['kode_barang'] ?>" name="kd_brg">
-                                                    <div class="mb-3">
-                                                        <label for="recipient-name" class="col-form-label">Nama Barang: </label>
-                                                        <select name="nm_brg" class="form-select" aria-label="Default Select Example">
-                                                            <?php
-                                                            $query = mysqli_query($conn, "SELECT * FROM tb_barang");
+      <div class="modal fade" id="modalEditPinjaman<?php echo $no ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+          <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Peminjaman</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <form action="proses/proses_update_peminjaman.php" method="POST">
+          <div class="modal-body">
+          <input type="hidden" value="<?php echo $data['kode_barang'] ?>" name="kd_brg">
+          div class="mb-3">
+          <label for="recipient-name" class="col-form-label">Nama Barang: </label>
+            <select name="nm_brg" class="form-select" aria-label="Default Select Example">
+              <?php
+                $query = mysqli_query($conn, "SELECT * FROM tb_barang");
 
-                                                            foreach ($query as $_data) {
-                                                                echo "<option value='$_data[kode_barang]'> $_data[kode_barang] $_data[nama_barang] $_data[keterangan]</option>";
-                                                            }
-                                                            ?>
-                                                        </select>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label for="recipient-name" class="col-form-label">Waktu Pengembalian:</label>
-                                                        <input type="datetime-local" name="wkt_pengembalian" class="form-control">
-                                                    </div>
-                                                    <div class="text-center text-danger font-monospace">
-                                                        <h6>Waktu Peminjaman akan Otomatis terisi..!</h6>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary">Simpan</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                foreach ($query as $_data) {
+                  echo "<option value='$_data[kode_barang]'> $_data[kode_barang] $_data[nama_barang] $_data[keterangan]</option>";
+                }
+              ?>
+                </select>
+                </div>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Waktu Pengembalian:</label>
+                  <input type="datetime-local" name="wkt_pengembalian" class="form-control">
+                </div>
+                <div class="text-center text-danger font-monospace">
+                  <h6>Waktu Peminjaman akan Otomatis terisi..!</h6>
+                </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
 <!-- Akhir Modal ubah data barang -->
 
 <!-- Modal hapus data barang -->
-<div class="modal fade" id="Modalhapus<?php echo $no ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Hapus data barang</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal fade" id="Modalhapus<?php echo $no ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Hapus data barang</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Apakah anda yakin ingin menghapus data barang <?php echo $data['nama_barang'];?> ini?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <a href="proses/proses_hapus_peminjaman.php?id=<?php echo $data ['kode_barang'] ?>"
+              class="btn btn-danger">Hapus</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-        Apakah anda yakin ingin menghapus data barang <?php echo $data['nama_barang'];?> ini?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <a href="proses/proses_hapus_peminjaman.php?id=<?php echo $data ['kode_barang'] ?>"
-        class="btn btn-danger">Hapus</a>
-      </div>
-    </div>
-  </div>
-</div>
 <!-- Akhir Modal hapus data barang -->
 
     <?php } ?>
@@ -179,41 +178,41 @@ WHERE username='$_SESSION[username]'");
     </div>
         <!--Akhir content-->
 
-        <!-- Modal tambah peminjaman -->
-<div class="modal fade" id="tambahdatabarang" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah peminjaman</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form action="proses/proses_tambah_peminjaman.php" method="POST">
-        <input type="hidden" name="kd_brg">
-      <div class="modal-body">
-          <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Nama Barang:</label>
-            <select name="kode_brg" class="form-select" aria-label="Default select example">
-              <?php
-              $query = mysqli_query ($conn, "SELECT * FROM tb_barang");
-              foreach ($query as $hasil){
-                echo "<option value='$hasil[kode_barang]'>$hasil[kode_barang] $hasil[nama_barang]  $hasil[keterangan]</option>";
-              }
-              ?>
-            </select> 
+<!-- Modal tambah peminjaman -->
+      <div class="modal fade" id="tambahdatabarang" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Tambah peminjaman</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="proses/proses_tambah_peminjaman.php" method="POST">
+              <input type="hidden" name="kd_brg">
+            <div class="modal-body">
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Nama Barang:</label>
+                  <select name="kode_brg" class="form-select" aria-label="Default select example">
+                    <?php
+                    $query = mysqli_query ($conn, "SELECT * FROM tb_barang");
+                    foreach ($query as $hasil){
+                      echo "<option value='$hasil[kode_barang]'>$hasil[kode_barang] $hasil[nama_barang]  $hasil[keterangan]</option>";
+                    }
+                    ?>
+                  </select> 
+                </div>
+            <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Waktu Pengembalian:</label>
+                <input name="wkt_pengembalian" type="datetime-local" class="form-control">
+            </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-primary">Simpan Data</button>
+            </div>
+            </form>
           </div>
-      <div class="mb-3">
-            <label for="recipient-name" class="col-form-label">Waktu Pengembalian:</label>
-          <input name="wkt_pengembalian" type="datetime-local" class="form-control">
+        </div>
       </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-        <button type="submit" class="btn btn-primary">Simpan Data</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div>
 <!-- Akhir Modal tambah peminjaman -->
 
 <!-- Modal list barang pinjaman  -->
