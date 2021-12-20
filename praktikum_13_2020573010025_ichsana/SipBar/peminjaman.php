@@ -119,7 +119,7 @@ WHERE username='$_SESSION[username]'");
           <form action="proses/proses_update_peminjaman.php" method="POST">
           <div class="modal-body">
           <input type="hidden" value="<?php echo $data['kode_barang'] ?>" name="kd_brg">
-          div class="mb-3">
+          <div class="mb-3">
           <label for="recipient-name" class="col-form-label">Nama Barang: </label>
             <select name="nm_brg" class="form-select" aria-label="Default Select Example">
               <?php
