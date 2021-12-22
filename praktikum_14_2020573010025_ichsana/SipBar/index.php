@@ -6,6 +6,8 @@ if (empty ($_GET['x'])){
   require "home.php";
 }elseif($_GET['x']=='peminjaman'){
   require "peminjaman.php";
+}elseif($_GET['x']=='datapem'){
+  require "data_peminjaman.php";
 }elseif($_GET['x']=='mahasiswa'){
   require "mahasiswa.php";
 }elseif($_GET['x']=='dosen'){
@@ -20,8 +22,6 @@ if (empty ($_GET['x'])){
     require "setting.php";
 }elseif($_GET['x']=='databrg'){
     require "data_barang.php";
-}elseif($_GET['x']=='datapeminjaman'){
-    require "data_peminjaman.php";
 }else{
   echo "<script>window.location ='home';</script>";
 }

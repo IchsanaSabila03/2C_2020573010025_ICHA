@@ -12,7 +12,7 @@ $select = mysqli_query($conn, "SELECT waktu_pinjam FROM tb_peminjaman WHERE bara
 $hasil = mysqli_fetch_array($select);
 
 if ($select) {
-    echo "<script>alert('Data telah diperbaharui, Tanggal peminjaman diset pada $hasil[waktu_peminjaman] '); window.location='../peminjaman';</script>";
+    echo "<script>alert('Data telah diperbaharui, Tanggal peminjaman telah di set $hasil[waktu_peminjaman] '); window.location='../peminjaman';</script>";
 } else {
     echo "<script>alert('Mohon maaf data gagal di perbarui');
         window.location='../peminjaman';</script>";

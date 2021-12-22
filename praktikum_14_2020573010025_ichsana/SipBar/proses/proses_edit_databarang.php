@@ -10,6 +10,6 @@ $update = mysqli_query($conn,"UPDATE tb_barang SET nama_barang='$nm_brg', ketera
 if ($update){
     echo "<script>window.location='../databrg';</script>";
 }else{
-    echo "<script>alert('Mohon maaf data gagal di perbarui');
+    echo "<script>alert('Maaf data gagal di perbarui😭');
         window.location='../databrg';</script>";
 }

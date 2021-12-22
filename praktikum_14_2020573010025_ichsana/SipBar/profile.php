@@ -86,7 +86,7 @@ require "proses/koneksi.php";
             <div class="mb-3">
               <label class="form-label">Tanggal Lahir</label>
               <input type="text" class="form-control"
-              value="<?php echo $data1['tgl_lahir'];?>"
+              value="<?php echo $data1['tanggal_lahir'];?>"
               disabled>
             </div>
             <div class="mb-3">

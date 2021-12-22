@@ -11,6 +11,6 @@ values ('$kd_brg', '$nm_brg','$ket','$kondisi')");
 if ($input){
     echo "<script>window.location='../databrg';</script>";
 }else{
-    echo "<script>alert('Mohon maaf data gagal di tambah');
+    echo "<script>alert('Maaf data gagal di tambah, sabar yaa😭');
         window.location='../databrg';</script>";
 }

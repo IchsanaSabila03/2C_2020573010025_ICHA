@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['simpan'])) {
-    require "../proses/koneksi.php";
+    require "proses/koneksi.php";
 
     $username = $_POST['username'];
     $passwordbaru = md5($_POST['passwordbaru']);
@@ -21,7 +21,7 @@ if (isset($_POST['simpan'])) {
                 echo '<script>alert("Password berhasil diubah");</script>';
                 echo '<script>window.location="setting.php";</script>';
             } else {
-                echo '<script>alert("Password gagal diubah, mohon kontak admin");</script>';
+                echo '<script>alert("Maaf Password gagal diubah");</script>';
                 echo '<script>window.location="setting.php";</script>';
             }
         }

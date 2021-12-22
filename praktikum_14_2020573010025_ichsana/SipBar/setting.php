@@ -35,10 +35,10 @@ $data1 = mysqli_fetch_array($query1);
                 </div>
                 <!--isi konten -->
                 <div class="col-9 mt-3">
-                    <h4 class="card-header"> Setting Profile</h4>
+                    <h4 class="card-header"> Setting</h4>
                     <hr>
                     <div class="card mt-4">
-                            <form action="proses/proses_gantipw.php" method="POST">
+                            <form action="proses/proses_ganti_password.php" method="POST">
                                 <div class="mb-3">
                                     <label for="exampleInputUsername1" class="form-label">username</label>
                                     <input type="text" class="form-control" id="exampleInputUsername1" aria-describedby="emailHelp" name="username" value="<?= $_SESSION['username'] ?>" readonly>
