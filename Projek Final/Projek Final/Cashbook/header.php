@@ -15,12 +15,12 @@
       <!--Dropdown-->
       <div class="dropdown me-5 pe-4">
       <a href="#" class="d-flex align-items-center link-light text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="fika.jpeg" alt="" width="32" height="32" class="rounded-circle me-2">
+        <img src="chitchat.jpeg" alt="" width="32" height="32" class="rounded-circle me-2">
         <strong> <?php echo $_SESSION['username']; ?></strong>
       </a>
       <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
 
-        <li><a class="dropdown-item" href="../SipBar/proses/signout.php">Sign out</a></li>
+        <li><a class="dropdown-item" href="../cashbook/proses/signout.php">Sign out</a></li>
       </ul>
     </div>
     <!--Akhir Dropdown-->

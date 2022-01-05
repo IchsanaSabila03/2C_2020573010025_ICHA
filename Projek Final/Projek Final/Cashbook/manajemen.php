@@ -2,9 +2,9 @@
 require "proses/koneksi.php";
   $query = mysqli_query($conn, "SELECT * FROM tb_pengguna WHERE username = '$_SESSION[username]'");
   $data = mysqli_fetch_array($query);
-  if($data['level'] != 'admin')
+  if($data['level'] != 'admin' && $data['level'] != 'customer') 
   //exit();
-  echo "<script>window.location='home';</script>";
+   echo "<script>window.location='home';</script>";
 ?>
 <!doctype html>
 <html lang="en">
@@ -47,25 +47,19 @@ require "proses/koneksi.php";
           <div class="mb-3">
               <label class="form-label">ID User</label>
               <input type="text" class="form-control"
-              value="<?php echo $data['id_user'];?>"
+              value="<?php echo $data['id'];?>"
               disabled>
             </div>  
             <div class="mb-3">
-              <label class="form-label">Nama</label>
+              <label class="form-label">Username</label>
               <input type="text" class="form-control"
-              value="<?php echo $data['nama'];?>"
+              value="<?php echo $data['username'];?>"
               disabled>
             </div>
             <div class="mb-3">
-              <label class="form-label">Alamat</label>
+              <label class="form-label">Password</label>
               <input type="text" class="form-control"
-              value="<?php echo $data['alamat'];?>"
-              disabled>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Nomor Telepon</label>
-              <input type="text" class="form-control"
-              value="<?php echo $data['no_hp'];?>"
+              value="<?php echo $data['password'];?>"
               disabled>
             </div>
             <div class="mb-3">
@@ -76,12 +70,7 @@ require "proses/koneksi.php";
             </div>
             
             <!--<button type="submit" class="btn btn-primary">Submit</button>-->
-          </form>
-        </div>
-      </div>
-    </div>
-    <hr>
-                    <div class="card mt-4">
+            <div class="card mt-4">
                             <form action="proses/proses_ganti_password.php" method="POST">
                                 <div class="mb-3">
                                     <label for="exampleInputUsername1" class="form-label">username</label>
@@ -122,6 +111,11 @@ require "proses/koneksi.php";
                                 </div>
                                 <!-- Akhir isi konten -->
           </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <hr>
         </div>
       </div>
     <!-- Optional JavaScript; choose one of the two! -->
